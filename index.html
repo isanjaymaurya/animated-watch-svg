@@ -9,7 +9,6 @@
         <svg width="200" height="200" viewBox="-100 -100 200 200">
             <circle class="minute_marker" r="90" pathLength="60" />
             <circle class="hour_marker" r="90" pathLength="60" />
-            <!-- <text id="text" class="text" x="45" y="5"></text> -->
 
             <g id="hour_hand">
                 <line class="hand" x1="0" y1="0" x2="0" y2="-50" />
@@ -28,9 +27,7 @@
             <circle class="center" r="3" />
         </svg>
 
-        <div id="current-time" class="text-center ">
-
-        </div>
+        <div id="current-time" class="text-center"></div>
     </div>
 
     <script>
@@ -50,7 +47,7 @@
             const minute = date.getMinutes() + date.getSeconds() / 60;
             const second = date.getSeconds() + date.getMilliseconds() / 1000;
 
-            textElement.textContent = `${day}:${parseInt(minute)} ${ampm}`;
+            textElement.textContent = `${day}:${parseInt(minute)}:${parseInt(second)} ${ampm}`;
             hoursElement.setAttribute("transform", `rotate(${(360 / 12) * hour})`);
             minutesElement.setAttribute("transform", `rotate(${(360 / 60) * minute})`);
             secondsElement.setAttribute("transform", `rotate(${(360 / 60) * second})`);
@@ -59,11 +56,6 @@
         }
 
         requestAnimationFrame(animate);
-
-        textElement.addEventListener("click", () => {
-            showDate = !showDate;
-        });
-        
 
         document.querySelector("svg").style.display = "block";
     </script>
